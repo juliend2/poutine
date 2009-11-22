@@ -44,6 +44,7 @@ class Poutine:
                 select = self.questions.select()
                 questions = select.execute()
                 nameSpace = {'title': 'Question Links', 'contents': 'index', 'questions':questions}
+                print >> self.environ['wsgi.errors'], str(questions)
                 self.retval['output'] = str(Template(file='index.tmpl', searchList=[nameSpace]))
             elif qs['action'] == 'add' :
                 posted = self.getpost()
