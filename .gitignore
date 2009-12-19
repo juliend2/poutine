@@ -3,3 +3,5 @@ logs/apache_error.log
 *.swp
 *.tmpl
 *.pyc
+._*
+.AppleDouble

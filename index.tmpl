@@ -1,10 +1,19 @@
-<html>
-<head><title>$title</title></head>
+#encoding UTF-8
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="poutine" />
+<title>$title</title>
+</head>
 <body>
-$contents
+<h1> $contents </h1>
+<a href="/?action=add">Add</a>
+<ul>
  #for $question in $questions: 
-  ${question.question} <br/>
+  <li>${question.question} <a href="/?action=delete&id=${question.id}">Delete</a></li>
  #end for
+</ul>
 ## this is a single-line Cheetah comment and won't appear in the output
 #* This is a multi-line comment and won't appear in the output
    blah, blah, blah 

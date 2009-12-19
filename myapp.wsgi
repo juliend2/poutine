@@ -12,8 +12,8 @@ def application(environ, start_response):
         sys.path.append(project_dir+'/questionlinks') # sinon, on l'ajoute 
         
     # inclure poutine :
-    import poutine as p
-    poutine = p.Poutine(environ)
+    import app as p
+    poutine = p.App(environ)
     dispatch_dict = poutine.dispatch()
     output = dispatch_dict['output']
     status = dispatch_dict['status']
