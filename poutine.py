@@ -1,8 +1,8 @@
 
 	#~POUTINE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-	#									  #
+	#																			#
 	# It's a Web nano-framework in Python #
-	#									   #
+	#																			#
 	#~Enjoy!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 import inspect
@@ -13,7 +13,6 @@ from urlparse import urlparse, urlunparse, urlsplit
 
 
 class Poutine:
-	# poutine-related :
 	environ = {}
 	retval = {}
 	def __init__(self, environ):
