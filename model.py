@@ -19,7 +19,7 @@ class Question(Base):
 	question = Column(String)
 	sorting = Column(Integer)
 	created = Column(String)
-	answers = relation("Answer", backref="question", order_by = "Answer.id")
+	answers = relation("Answer", backref="question", order_by = "Answer.id",cascade="all")
 	def __init__(self, question, sorting=0, created=str(datetime.datetime.now)):
 		self.question = question
 		self.sorting = sorting
