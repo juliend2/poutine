@@ -18,23 +18,24 @@
 <body>
 <h1>$title</h1>
 <!-- <a href="/?action=add">New Question</a> -->
-<form action="http://questionlinks/?action=add" method="post" accept-charset="utf-8">
-	<label for="question">Question: </label><input type="text" name="question" value="" id="question"/>
-	<p><input type="submit" value="Add"/></p>
+<form action="http://questionlinks/?action=add" method="post" accept-charset="utf-8" id="addquestion">
+	<label for="question">New Question: </label>
+	<input type="text" name="question" value="" id="question"/>
+	<input type="submit" value="Add"/>
 </form>
-<ul>
+<ul id="questions">
 #for $question in $questions: 
 	<li class="question">
-	<a href="/?action=delete&id=${question.id}">Delete</a> |
-	<a href="/?action=add_answer&id=${question.id}" class="newanswer">New Answer</a> |
-	<a href="#" class="showanswer">Show Answers</a>
+	<a href="/?action=delete&id=${question.id}" class="btn">Delete Question</a> |
+	<a href="/?action=add_answer&id=${question.id}" class="newanswer btn">New Answer</a> |
+	<a href="#" class="showanswer btn">Show Answers</a>&nbsp;
 	${question.question}
 	
 	#if question.answers:
 		<ul class="answers">
 			#for $answer in question.answers:
 				<li class="answer">
-				<a href="/?action=deleteanswer&id=${answer.id}">Delete</a>
+				<a href="/?action=deleteanswer&id=${answer.id}" class="btn">Delete Answer</a>&nbsp;
 				#if answer.answer_link:
 					<a href="${answer.answer_link}" class="answer_link" target="_blank">${answer.answer_link}</a>
 				#end if
