@@ -8,18 +8,18 @@ from sqlalchemy.orm import relation, backref
 # sqlAlchemy :
 Base = declarative_base()
 db = create_engine('mysql://root:@127.0.0.1:3306/questionlinks')
-db.echo = False  # set to True to see the SQL output in the terminal
+db.echo = True  # set to True to see the SQL output in the terminal
 Session = sessionmaker(bind=db)
 session = Session()
 
 
 class Question(Base):
 	__tablename__ = 'questions'
-	id = Column(Integer, primary_key=True)
+	id = Column('id',Integer, primary_key=True)
 	question = Column(String)
 	sorting = Column(Integer)
 	created = Column(String)
-	answers = relation("Answer", backref="question")
+	answers = relation("Answer", backref="question", order_by = "Answer.id")
 	def __init__(self, question, sorting=0, created=str(datetime.datetime.now)):
 		self.question = question
 		self.sorting = sorting
@@ -29,7 +29,7 @@ class Question(Base):
 
 class Answer(Base):
 	__tablename__ = 'answers'
-	id = Column(Integer, primary_key=True)
+	id = Column('id',Integer, primary_key=True)
 	answer_link = Column(String)
 	answer_text = Column(Text)
 	sorting = Column(Integer)
@@ -44,3 +44,8 @@ class Answer(Base):
 	def __repr__(self):
 		return "<Answer('%s','%s','%s','%s','%s')>" % (self.answer_link, self.answer_text, self.sorting, self.created, self.question_id)
 
+
+if __name__ == '__main__':
+	questions = session.query(Question).order_by(Question.id).first()
+	for an in questions.answers:
+		print an

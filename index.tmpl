@@ -21,6 +21,7 @@
 		<ul>
 			#for $answer in question.answers:
 				<li class="answer">
+				<a href="/?action=deleteanswer&id=${answer.id}">Delete</a>
 				#if answer.answer_link:
 					<a href="${answer.answer_link}" class="answer_link" target="_blank">${answer.answer_link}</a>
 				#end if
@@ -29,22 +30,22 @@
 				</div>
 				</li>
 			#end for
-			<form action="/?action=addanswer&id=${question.id}" method="post" accept-charset="utf-8">
-				<p>
-					<label for="link">link</label>
-					<input type="text" name="link" value="" id="link"/>
-				</p>
-				<p>
-					<label for="text">text</label>
-					<textarea name="text"></textarea>
-				</p>
-				<p>
-					<input type="hidden" name="question_id" value="${question.id}" id="question_id"/>
-					<input type="submit" value="Add"/>
-				</p>
-			</form>
 		</ul>
 	#end if
+	<form action="/?action=addanswer&id=${question.id}" method="post" accept-charset="utf-8">
+		<p>
+			<label for="link">link</label>
+			<input type="text" name="link" value="" id="link"/>
+		</p>
+		<p>
+			<label for="text">text</label>
+			<textarea name="text"></textarea>
+		</p>
+		<p>
+			<input type="hidden" name="question_id" value="${question.id}" id="question_id"/>
+			<input type="submit" value="Add"/>
+		</p>
+	</form>
 	</li> 
 #end for
 </ul>

@@ -21,7 +21,8 @@ class App(Poutine):
 	def index(self):
 		questions = session.query(Question).order_by(Question.id)
 		nameSpace = {'title': 'Question Links', 'subtitle': 'Questions', 'questions':questions}
-		print >> self.environ['wsgi.errors'], str(questions)
+		session.commit()
+		# print >> self.environ['wsgi.errors'], str(questions)
 		return str(Template(file='index.tmpl', searchList=[nameSpace]))
 	
 	def add(self):
@@ -54,3 +55,12 @@ class App(Poutine):
 			session.add(a)
 			self.redirect('index')
 			return ''
+
+	def deleteanswer(self):
+		try: 
+			answer = session.query(Answer).filter_by(id = self.qs['id']).one()
+			session.delete(answer)
+			self.redirect('index')
+			return ''
+		except NoResultFound, e:
+			return str(e)

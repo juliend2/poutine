@@ -1,6 +1,7 @@
 import inspect
 import sys
 import os
+sys.stdout = sys.stderr
 
 def application(environ, start_response):
     status = '200 OK'
@@ -24,12 +25,6 @@ def application(environ, start_response):
     monitor.start(interval=1.0)
     monitor.track(os.path.join(os.path.dirname(__file__), 'poutine.py'))
     # .../ONLY DEV!
-    
-    # DETECT THE MODE THAT WE'RE RUNNING IN :
-    # if not environ['mod_wsgi.process_group']:
-    #     output = 'EMBEDDED MODE'
-    # else:
-    #     output = 'DAEMON MODE'
     
     # output :
     response_headers = [('Content-type', 'text/html'),
