@@ -5,21 +5,31 @@
 }
 body {
 	color: #262626;
+	font-size: 15px;
 	font-family: Helvetica, Arial, sans-serif;
 	padding: 10px;
 }
 h1 {
 	padding: 10px 0 10px 0 ;
 }
-form input[type="text"] {
+form input[type="text"],
+form textarea {
 	font-size: 17px;
 	width: 400px;
+	border: 1px solid #999;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #4E4E4E;
+	padding: 6px 4px;
 }
 form input[type="submit"] {
 	font-size: 16px;
 }
 form#addquestion {
 	padding-bottom: 20px;
+}
+form table label {
+	padding: 5px 4px;
+	float: left;
 }
 a {
 	color: #254F56;
@@ -39,4 +49,14 @@ ul#questions {
 	ul#questions ul {
 		padding: 5px 0 10px 10px;
 	}
+	ul li {
+		line-height: 1.6em;
+	}
 	
+table td {
+	padding-top: 5px;
+	padding-right: 5px;
+}
+table tr {
+	vertical-align: top;
+}
